@@ -20,9 +20,10 @@ def count_letters(text: str) -> dict:
 
 
 def calculate_frequency(letter_count: dict) -> dict:
-    calculate_={}
+    calculate_= {}
+    sum_letter = sum(letter_count.values())
     for i in letter_count:
-        calculate_[i] = round(letter_count[i]/len(letter_count), 2)
+        calculate_[i] = round(letter_count[i]/sum_letter, 2)
     return calculate_
 
     """
@@ -77,5 +78,5 @@ main_str = """
 count_dict = count_letters(main_str)
 frequency_dict = calculate_frequency(count_dict)
 
-
-print(frequency_dict)
+for key, value in frequency_dict.items():
+    print(f"{key}: {value}")
