@@ -79,4 +79,4 @@ count_dict = count_letters(main_str)
 frequency_dict = calculate_frequency(count_dict)
 
 for key, value in frequency_dict.items():
-    print(f"{key}: {value}")
+    print(f"{key}: {value:.2f}")
