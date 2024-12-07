@@ -33,7 +33,9 @@ def get_conv_rate(base_currency, key):
     return conversion_rate_dict
 
 def valid_currency(currency, currencies):
-    return currency in currencies
+    while not currency in currencies:
+        print("Некорректный ввод валюты")
+        currency = input("Введите конвертируемую валюту (например: RUB, USD и т.д). : ").strip().upper()
 
 def convert(base_currency, target_currency, sum, key):
     rate = get_conv_rate(base_currency, key)
@@ -48,15 +50,14 @@ def main():
 
     key = load_key('key_access.txt')
     currencies = load_currencies('currency.json')
+    
     base_currency = input("Введите конвертируемую валюту (например: RUB, USD и т.д). : ").strip().upper()
-    while not valid_currency(base_currency, currencies):
-        print("Некорректный ввод валюты")
-        base_currency = input("Введите конвертируемую валюту (например: RUB, USD и т.д). : ").strip().upper()
+    valid_currency(base_currency, currencies)
+
 
     target_currency = input("Введите валюту в которую необходимо сконвертировать (например: RUB, USD и т.д). : ").strip().upper()
-    while not valid_currency(target_currency, currencies):
-        print("Некорректный ввод валюты")
-        target_currency = input("Введите конвертируемую валюту (например: RUB, USD и т.д). : ").strip().upper()
+    valid_currency(target_currency, currencies)
+    
     while True:
         sum_input = input("Введите сумму: ")
         try:
